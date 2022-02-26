@@ -7,7 +7,7 @@ export default function AppLayout({ children }) {
     <>
       <Meta />
       <NavBar />
-      <main>{children}</main>;
+      <main>{children}</main>
       <Footer />
     </>
   );
