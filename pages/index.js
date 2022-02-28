@@ -1,12 +1,32 @@
-import { fetchPopular } from "../config/server";
+import { fetchPopular, fetchTrending } from "../config/server";
 import PopularMovies from "../components/content/PopularMovies";
+import TrendingMovies from "../components/content/TrendingMovies";
 
-export default function Home({ movies }) {
-  console.log(process.env.API_KEY);
-  return <PopularMovies movies={movies} />;
+export default function Home({ trends }) {
+  return (
+    <>
+      {/* <PopularMovies movies={movies} /> */}
+      <TrendingMovies movies={trends} />
+    </>
+  );
 }
 
 export async function getServerSideProps() {
-  const result = await fetchPopular(1);
-  return { props: { movies: result } };
+  const [
+    topMovies,
+    nowPlayingMovies,
+    trendingMovies,
+    popularMovies,
+    upcomingMovies,
+  ] = Promise.all();
+  // const trends = await fetchTrending();
+  return {
+    props: {
+      topMovies,
+      nowPlayingMovies,
+      trendingMovies,
+      popularMovies,
+      upcomingMovies,
+    },
+  };
 }
