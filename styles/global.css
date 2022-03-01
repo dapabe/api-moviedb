@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply overflow-x-hidden bg-teal-700 text-white;
+    @apply overflow-auto bg-teal-700 text-white;
   }
   header {
     @apply sticky top-0 z-50 bg-sky-800 px-10 py-2 uppercase tracking-wider;
@@ -24,5 +24,8 @@
 @layer components {
   .header-item {
     @apply flex items-center space-x-2;
+  }
+  .thumbnail {
+    @apply relative min-h-[170px] min-w-[250px] origin-center cursor-pointer  rounded-xl border-[2px] border-slate-600 shadow-xl transition-[transform_colors] duration-300 hover:scale-105 hover:border-slate-300 hover:shadow-2xl md:min-h-[210px] md:min-w-[330px];
   }
 }

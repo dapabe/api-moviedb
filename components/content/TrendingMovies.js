@@ -7,9 +7,11 @@ export default function TrendingMovies({ movies }) {
   return (
     <section>
       <Carousel autoPlay infiniteLoop showStatus={false} interval={2000}>
-        {movies.map((movie) => (
-          <img src={} height={300} key={movie.id} />
-        ))}
+        {movies.map(
+          (movie) =>
+            // <img src={} height={300} key={movie.id} />
+            aa
+        )}
       </Carousel>
     </section>
   );

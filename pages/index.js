@@ -1,12 +1,23 @@
-import { fetchPopular, fetchTrending } from "../config/server";
-import PopularMovies from "../components/content/PopularMovies";
-import TrendingMovies from "../components/content/TrendingMovies";
+import {
+  fetchPlaying,
+  fetchPopular,
+  fetchTop,
+  fetchTrending,
+  fetchUpcoming,
+} from "../config/server";
+import Collection from "../components/content/Collection";
 
-export default function Home({ trends }) {
+export default function Home({
+  topMovies,
+  nowPlayingMovies,
+  trendingMovies,
+  popularMovies,
+  upcomingMovies,
+}) {
   return (
     <>
-      {/* <PopularMovies movies={movies} /> */}
-      <TrendingMovies movies={trends} />
+      <Collection movies={popularMovies} />
+      {/* <Collection /> */}
     </>
   );
 }
@@ -18,8 +29,13 @@ export async function getServerSideProps() {
     trendingMovies,
     popularMovies,
     upcomingMovies,
-  ] = Promise.all();
-  // const trends = await fetchTrending();
+  ] = await Promise.all([
+    fetchTop(),
+    fetchPlaying(),
+    fetchTrending(),
+    fetchPopular(),
+    fetchUpcoming(),
+  ]);
   return {
     props: {
       topMovies,

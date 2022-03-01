@@ -11,6 +11,6 @@ export function rateScore(score) {
 export function cutYear(fulldate) {
   return fulldate.split("-")[0];
 }
-export function returnLimit(data, numberLimit) {
+export const returnLimit = (data, numberLimit) => {
   return !numberLimit ? data : (data.length = numberLimit);
-}
+};
