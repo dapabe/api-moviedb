@@ -4,13 +4,13 @@
 
 @layer base {
   body {
-    @apply overflow-auto bg-teal-700 text-white;
+    @apply bg-teal-700 text-white;
   }
   header {
     @apply sticky top-0 z-50 bg-sky-800 px-10 py-2 uppercase tracking-wider;
   }
   main {
-    @apply max-h-full min-h-screen py-4;
+    @apply max-h-full min-h-screen;
   }
   footer {
     @apply flex h-24 w-full items-center justify-center bg-slate-800;
@@ -26,6 +26,6 @@
     @apply flex items-center space-x-2;
   }
   .thumbnail {
-    @apply relative min-h-[170px] min-w-[250px] origin-center cursor-pointer  rounded-xl border-[2px] border-slate-600 shadow-xl transition-[transform_colors] duration-300 hover:scale-105 hover:border-slate-300 hover:shadow-2xl md:min-h-[210px] md:min-w-[330px];
+    @apply relative min-h-[170px] min-w-[250px] origin-center cursor-pointer  overflow-hidden rounded-xl border-[2px] border-transparent shadow-xl transition-[transform_colors] duration-300 hover:scale-105 hover:border-slate-300 hover:shadow-2xl md:min-h-[210px] md:min-w-[330px];
   }
 }

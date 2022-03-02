@@ -9,7 +9,7 @@ export default function NavBar() {
   return (
     <header>
       <nav className="flex items-center">
-        <ol className="hidden space-x-4 md:flex">
+        <ol className=" flex space-x-4">
           <li>
             <Link href={"/"}>
               <a>
@@ -35,9 +35,6 @@ export default function NavBar() {
             </Link>
           </li>
         </ol>
-        <button className="ml-auto rounded-sm border-2 border-white px-2 font-medium uppercase tracking-wider  hover:bg-white hover:text-black md:transition-colors">
-          login
-        </button>
       </nav>
     </header>
   );

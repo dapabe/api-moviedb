@@ -13,14 +13,17 @@ const Upcoming_URL = `${BASE_URL}/movie/upcoming?api_key=${process.env.API_KEY}&
 const Image_URL = (movie_id) => {
   `${BASE_URL}/movie/${movie_id}/images?api_key=${process.env.API_KEY}&language=es-ES`;
 };
+export const MOVIE_DETAILS = (movie_id) => {
+  return `${BASE_URL}/movie/${movie_id}?api_key=${process.env.API_KEY}&language=es-ES`;
+};
 //  =====================================================================================================================
 //  Fetcher types
-async function singleFetcher(url) {
+export async function singleFetcher(url) {
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
-async function pluralFetcher(url) {
+export async function pluralFetcher(url) {
   const response = await fetch(url);
   const data = await response.json();
   return data.results;
@@ -53,9 +56,7 @@ export async function fetchUpcoming() {
 }
 //  =====================================================================================================================
 //  Specific data
-export const MOVIE_DETAILS = (movie_id) => {
-  return `${BASE_URL}/movie/${movie_id}?api_key=${process.env.API_KEY}&language=es-ES`;
-};
+
 export async function fetchImage(movie_id) {
   const data = await singleFetcher(Image_URL);
   return data;
