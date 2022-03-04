@@ -8,14 +8,10 @@ export default function Collection({ title, movies, shows }) {
         {/* Check if that attr is not set */}
         {movies &&
           !shows &&
-          movies.map((movie) => (
-            <Thumbnail title={movie.title} obj={movie} key={movie.id} />
-          ))}
+          movies.map((movie) => <Thumbnail obj={movie} key={movie.id} />)}
         {shows &&
           !movies &&
-          shows.map((show) => (
-            <Thumbnail title={show.title} obj={show} key={show.id} isShow />
-          ))}
+          shows.map((show) => <Thumbnail obj={show} key={show.id} isShow />)}
       </div>
     </section>
   );

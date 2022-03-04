@@ -3,14 +3,15 @@ import Link from "next/link";
 import { IMAGE_URL } from "../../../config/server";
 import { cutYear } from "../../utils";
 
-export default function Thumbnail({ title, obj, isShow }) {
+export default function Thumbnail({ obj, isShow }) {
   return (
     <Link href={`/${!isShow ? "movie" : "show"}/${obj.id}`}>
       <figure className="thumbnail">
         <Image
           src={
-            `${IMAGE_URL}${obj.poster_path || obj.backdrop_path}` ||
-            "/images/placeholder.jpg"
+            `https://image.tmdb.org/t/p/w500/${
+              obj.poster_path || obj.backdrop_path
+            }` || "/images/placeholder.jpg"
           }
           layout="fill"
           objectFit="cover"
@@ -24,10 +25,10 @@ export default function Thumbnail({ title, obj, isShow }) {
             title="Titulo de la pelicula"
             className=" rounded-xl bg-slate-900/50 px-2"
           >
-            {title}
+            {obj.title || obj.original_name}
           </h2>
           <span className="rounded-xl bg-slate-900/50 px-2">
-            {cutYear(obj.release_date)}
+            {cutYear(obj.release_date || obj.first_air_date)}
           </span>
         </figcaption>
         {obj.adult && (
