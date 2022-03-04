@@ -7,10 +7,10 @@
     @apply bg-teal-700 text-white;
   }
   header {
-    @apply sticky top-0 z-50 bg-sky-800 px-10 py-2 uppercase tracking-wider;
+    @apply fixed top-0 z-50 w-full bg-sky-800 px-10 py-2 uppercase tracking-wider;
   }
   main {
-    @apply max-h-full min-h-screen;
+    @apply min-h-screen;
   }
   footer {
     @apply flex h-24 w-full items-center justify-center bg-slate-800;

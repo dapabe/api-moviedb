@@ -3,17 +3,18 @@ import Link from "next/link";
 import { IMAGE_URL } from "../../../config/server";
 import { cutYear } from "../../utils";
 
-export default function Thumbnail({ title, obj }) {
+export default function Thumbnail({ title, obj, isShow }) {
   return (
-    <Link href={`/movie/${obj.id}`}>
+    <Link href={`/${!isShow ? "movie" : "show"}/${obj.id}`}>
       <figure className="thumbnail">
         <Image
           src={
-            `${IMAGE_URL}${obj.backdrop_path || obj.poster_path}` ||
-            `${IMAGE_URL}${obj.poster_path}`
+            `${IMAGE_URL}${obj.poster_path || obj.backdrop_path}` ||
+            "/images/placeholder.jpg"
           }
           layout="fill"
           objectFit="cover"
+          objectPosition="center"
           placeholder="blur"
           blurDataURL="/images/placeholder.jpg"
           // className="rounded-xl"

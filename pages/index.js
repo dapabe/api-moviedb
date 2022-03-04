@@ -6,6 +6,7 @@ import {
   fetchUpcoming,
 } from "../config/server";
 import Collection from "../components/content/TrainUI/Collection";
+import Footer from "../components/Footer";
 
 export default function Home({
   topMovies,
@@ -15,10 +16,18 @@ export default function Home({
   upcomingMovies,
 }) {
   return (
-    <section className="py-4">
-      <Collection movies={popularMovies} title="Películas populares" />
-      <Collection movies={topMovies} title="Películas mejor calificadas" />
-    </section>
+    <>
+      <section className="py-4">
+        <Collection
+          title="Películas en tendencia esta semana"
+          movies={trendingMovies}
+        />
+        <Collection title="Películas populares" movies={popularMovies} />
+        <Collection title="Series populares" />
+        <Collection title="Películas mejor calificadas" movies={topMovies} />
+      </section>
+      {/* <Footer /> */}
+    </>
   );
 }
 
