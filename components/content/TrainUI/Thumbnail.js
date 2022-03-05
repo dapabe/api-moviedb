@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IMAGE_URL } from "../../../config/server";
-import { cutYear } from "../../utils";
+import { cutYear } from "../../utilityFuncs";
 
 export default function Thumbnail({ obj, isShow }) {
   return (
-    <Link href={`/${!isShow ? "movie" : "show"}/${obj.id}`}>
+    <Link href={`/${!isShow ? "movies" : "shows"}/${obj.id}`}>
       <figure className="thumbnail">
         <Image
           src={

@@ -5,7 +5,6 @@ export const IMAGE_URL = "https://image.tmdb.org/t/p/original/";
 const M_NowPlaying_URL = `${BASE_URL}/movie/now_playing?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
 const M_Top_URL = `${BASE_URL}/movie/top_rated?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
 const M_Upcoming_URL = `${BASE_URL}/movie/upcoming?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
-const TV_Popular_URL = `${BASE_URL}/tv/popular?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
 //  =====
 const Image_URL = (movie_id) => {
   `${BASE_URL}/movie/${movie_id}/images?api_key=${process.env.API_KEY}&language=es-ES`;
@@ -46,7 +45,7 @@ export async function fetchTop() {
   return await pluralFetcher(M_Top_URL);
 }
 export async function fetchPlaying() {
-  return await singleFetcher(M_NowPlaying_URL);
+  return await pluralFetcher(M_NowPlaying_URL);
 }
 export async function fetchPopularMovies() {
   return await pluralFetcher(POPULAR_URL());

@@ -13,15 +13,16 @@ import Footer from "../components/Footer";
 export default function Home({
   upcomingMovies,
   topMovies,
+  nowPlayingMovies,
   trendingMovies,
   trendingTVs,
   popularMovies,
   popularTVs,
 }) {
-  console.log(trendingTVs);
   return (
     <>
-      <section className="py-4">
+      <section>
+        <Collection title="Películas en cartelera" movies={nowPlayingMovies} />
         <Collection
           title="Películas en tendencia esta semana"
           movies={trendingMovies}
@@ -34,7 +35,7 @@ export default function Home({
         <Collection title="Series populares" shows={popularTVs} />
         <Collection title="Películas mejor calificadas" movies={topMovies} />
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

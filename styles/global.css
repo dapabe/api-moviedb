@@ -4,20 +4,26 @@
 
 @layer base {
   body {
-    @apply bg-teal-700 text-white;
+    @apply bg-teal-700 text-white scrollbar-hide;
   }
   header {
-    @apply fixed top-0 z-50 w-full bg-sky-800 px-10 py-2 uppercase tracking-wider;
+    @apply fixed top-0 z-50 w-full bg-gray-800 px-10 py-2 uppercase tracking-wider;
   }
   main {
     @apply min-h-screen;
   }
   footer {
-    @apply flex h-24 w-full items-center justify-center bg-slate-800;
+    @apply flex h-24 w-full items-center justify-center bg-gray-800;
   }
 
   header a {
     @apply header-item;
+  }
+  header h2 {
+    @apply hidden sm:block;
+  }
+  main > section {
+    @apply mt-10 py-4;
   }
 }
 
