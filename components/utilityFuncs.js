@@ -14,9 +14,23 @@ export function parsedLangDate(keyValue, splitter = "-", lang = "es-ES") {
   const parsedDate = new Date(dateArr);
   return new Intl.DateTimeFormat(lang).format(parsedDate);
 }
-export const returnLimit = (data, numberLimit) => {
-  return !numberLimit ? data : (data.length = numberLimit);
-};
+// export const returnLimit = (data, numberLimit) => {
+//   return !numberLimit ? data : (data.length = numberLimit);
+// };
+
 export function numberToHours(number) {
-  return `${Math.floor(number / 60)}h ${number % 60}m`;
+  const averageTime = (array) => {
+    let summ = 0;
+    for (let i = 0; i < array.length; i++) {
+      summ += array[i];
+    }
+    return summ / array.length;
+  };
+  const parsedResult = (num) => {
+    if (num >= 60) return `${Math.floor(num / 60)}h ${Math.floor(num) % 60}m`;
+    else return `${Math.floor(num) % 60}m`;
+  };
+  return number.length > 1
+    ? parsedResult(averageTime(number))
+    : parsedResult(number);
 }

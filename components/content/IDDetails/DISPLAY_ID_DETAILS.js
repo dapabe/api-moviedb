@@ -1,78 +1,67 @@
-import { ClockIcon } from "@heroicons/react/solid";
-import { numberToHours, parsedLangDate } from "../../utilityFuncs";
+import Image from "next/image";
+import { IMAGEw_URL } from "../../../config/server";
 import {
+  Description,
+  DisplaySeasons,
   GenreList,
   HeadingLink,
+  ReleasedDate,
+  RunningTime,
   ShareButton,
   VidPreviewButton,
 } from "../MicroComponents";
 
-export function DISPLAY_ID_DETAILS({ title, callback, hasGenres, ...data }) {
+export function DISPLAY_ID_DETAILS({
+  title,
+  openModal,
+  hasGenres,
+  hasSeasons,
+  ...data
+}) {
+  console.log(hasSeasons);
   return (
-    <div className="absolute inset-y-28 inset-x-4 space-y-4 rounded-lg bg-black/70 p-4 md:inset-x-12 md:inset-y-auto md:bottom-10 ">
+    <div className="id-details">
       <div className="flex items-center">
         <HeadingLink homepage={data.homepage}>{title}</HeadingLink>
         {data.status && (
-          <i className="ml-auto rounded-full bg-teal-600 px-2" title="Status">
+          <i
+            className="ml-auto rounded-lg bg-teal-600 px-2 text-center"
+            title="Status"
+          >
             {data.status}
           </i>
         )}
       </div>
       <div className="flex items-center space-x-3 md:space-x-5">
         <VidPreviewButton text="Ver" />
-        <VidPreviewButton type text="Trailer" onClick={callback} />
+        <VidPreviewButton type text="Trailer" onClick={openModal} />
         <ShareButton />
       </div>
-      <div className="flex justify-between ">
-        <ul className="">
+      <div className="flex flex-wrap justify-between">
+        <ul>
           <li>
-            <time
-              dateTime={parsedLangDate(
-                data.release_date || data.first_air_date
-              )}
-            >
-              {/* Check if it has a certain keyword related to TV shows */}
-              <h1 className="mr-1 sm:inline">
-                {data.first_air_date
-                  ? "Se emitió por primera vez el"
-                  : "Estreno:"}
-                <span className="ml-1 font-semibold  lowercase">
-                  {parsedLangDate(data.release_date || data.first_air_date)}
-                </span>
-              </h1>
-            </time>
+            <ReleasedDate
+              typeToggler={data.first_air_date}
+              fulldate={data.release_date || data.first_air_date}
+            />
           </li>
           <li>
             {/* Check if it has a certain keyword related to TV shows */}
-            <h1 className="mr-1 flex items-center text-sm font-semibold">
-              {data.first_air_date ? (
-                <>
-                  <ClockIcon className="h-6" />
-                  <sup>x cap</sup>
-                </>
-              ) : (
-                <ClockIcon className="h-6" />
-              )}
-              <span className="ml-1 text-base lowercase">
-                {numberToHours(data.runtime || data.episode_run_time)}
-              </span>
-            </h1>
+            <RunningTime
+              typeToggler={data.first_air_date}
+              runningTime={data.runtime || data.episode_run_time}
+            />
           </li>
         </ul>
-        <div>
-          <h1 className="text-lg font-semibold ">
-            {hasGenres ? "Generos: " : "Genero: "}
-          </h1>
-          <ul className="justify-end text-sm sm:flex sm:space-x-2">
-            {GenreList(data.genres)}
-          </ul>
-        </div>
+        <GenreList isPlural={hasGenres} list={data.genres} />
       </div>
-      <p className="max-h-80 overflow-y-auto text-lg md:max-h-max">
-        {!data.overview
-          ? "No hay suficiente información disponible."
-          : data.overview}
-      </p>
+      <Description paragraph={data.overview} />
+      {data.seasons && (
+        <DisplaySeasons
+          title={hasSeasons ? "Ver temporadas y capitulos" : "Ver capitulos"}
+          list={data.seasons}
+        />
+      )}
     </div>
   );
 }

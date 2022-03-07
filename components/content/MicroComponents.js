@@ -1,9 +1,14 @@
+import Image from "next/image";
 import {
+  ClockIcon,
   ExternalLinkIcon,
   PlayIcon,
   ShareIcon,
   XIcon,
 } from "@heroicons/react/solid";
+import { ChevronDownIcon } from "@heroicons/react/outline";
+import { numberToHours, parsedLangDate } from "../utilityFuncs";
+import { IMAGEw_URL } from "../../config/server";
 
 const iconSize = "h-5";
 
@@ -23,7 +28,10 @@ export function VidPreviewButton({ type, text, ...props }) {
 }
 export function ShareButton() {
   return (
-    <button className="rounded-full border-2 p-2 hover:border-slate-900 hover:text-slate-900">
+    <button
+      className="rounded-full border-2 p-2 hover:border-slate-900 hover:text-slate-900"
+      title="Compartir"
+    >
       <ShareIcon className={iconSize} />
     </button>
   );
@@ -47,24 +55,104 @@ export function HeadingLink({ homepage, children }) {
       title="Ir a su sitio oficial."
     >
       <h1 className="flex text-3xl font-bold sm:text-4xl">
-        {children}
+        <span>{children}</span>
         <ExternalLinkIcon className={iconSize} />
       </h1>
     </a>
   );
 }
-export function GenreList(array) {
+function GenreItem(array) {
   return array.map((item) => (
     <li key={item.id} className="w-min">
       {item.name}
     </li>
   ));
 }
-
+export function GenreList({ isPlural, list }) {
+  return (
+    <div>
+      <h1 className="text-lg font-semibold ">
+        {isPlural ? "Generos: " : "Genero: "}
+      </h1>
+      <ul className="justify-end text-sm sm:flex sm:space-x-2">
+        {GenreItem(list)}
+      </ul>
+    </div>
+  );
+}
+export function RunningTime({ typeToggler, runningTime }) {
+  return (
+    <h1 className="mr-1 flex items-center text-sm ">
+      {typeToggler ? (
+        <>
+          <ClockIcon className="h-6" />
+          <p>promedio x cap</p>
+        </>
+      ) : (
+        <ClockIcon className="h-6" />
+      )}
+      <span className="ml-1 text-base lowercase">
+        {numberToHours(runningTime)}
+      </span>
+    </h1>
+  );
+}
+export function DisplaySeasons({ title, list }) {
+  return (
+    <section className="max-h-[300px] overflow-x-hidden rounded border">
+      <details className="group relative">
+        <summary className="sticky ml-2 flex cursor-pointer items-center">
+          <ChevronDownIcon className="mr-2 h-4 rotate-0 transition-transform group-open:-rotate-180" />
+          {title}
+        </summary>
+        <div className=" flex  flex-wrap justify-center gap-1 overflow-y-auto">
+          {list.map((item) => (
+            <figure className="relative min-h-[300px] min-w-[200px] border">
+              {item.poster_path && (
+                <Image
+                  src={
+                    `${IMAGEw_URL}${item.poster_path}` ||
+                    "./images/placeholder.jpg"
+                  }
+                  layout="fill"
+                  priority={false}
+                  objectFit="cover"
+                />
+              )}
+              <figcaption className="absolute bottom-0 z-10 w-full bg-gray-900/80 text-center">
+                <h1>{item.name}</h1>
+                <p>{item.episode_count} capitulos</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </details>
+    </section>
+  );
+}
+export function ReleasedDate({ typeToggler, fulldate }) {
+  return (
+    <time dateTime={parsedLangDate(fulldate)}>
+      <h1 className="mr-1 sm:inline">
+        {typeToggler ? "Se emitió por primera vez el" : "Estreno:"}
+        <span className="ml-1 font-semibold  lowercase">
+          {parsedLangDate(fulldate)}
+        </span>
+      </h1>
+    </time>
+  );
+}
+export function Description({ paragraph }) {
+  return (
+    <p className="max-h-80 overflow-y-auto indent-4 text-lg md:max-h-max">
+      {!paragraph ? "No hay suficiente información disponible." : paragraph}
+    </p>
+  );
+}
 export function ModalVideo({
   title = "Reproduciendo",
   condition,
-  setFunction,
+  closeModal,
   fallbackSearch,
   fallbackDate,
   children,
@@ -74,7 +162,7 @@ export function ModalVideo({
       {condition && (
         <div
           className="absolute inset-0 h-full w-full bg-black/95"
-          onClick={setFunction}
+          onClick={closeModal}
         />
       )}
       <div
@@ -84,7 +172,7 @@ export function ModalVideo({
       >
         <div className="flex items-center justify-between bg-slate-900 p-3.5 text-white">
           <h1 className="font-semibold">{title}</h1>
-          <CloseButton onClick={setFunction} />
+          <CloseButton onClick={closeModal} />
         </div>
         <div className="relative h-[calc(100vh-30vh)]">
           {!children ? (

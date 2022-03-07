@@ -7,33 +7,16 @@ import {
   fetchTrendingTVs,
   fetchUpcoming,
 } from "../config/server";
-import Collection from "../components/content/TrainUI/Collection";
 import Footer from "../components/Footer";
+import Railways from "../components/content/TrainUI/Railways";
+import Hero from "../components/content/HeroUI/Hero";
 
-export default function Home({
-  upcomingMovies,
-  topMovies,
-  nowPlayingMovies,
-  trendingMovies,
-  trendingTVs,
-  popularMovies,
-  popularTVs,
-}) {
+export default function Home({ collections }) {
   return (
     <>
       <section>
-        <Collection title="Películas en cartelera" movies={nowPlayingMovies} />
-        <Collection
-          title="Películas en tendencia esta semana"
-          movies={trendingMovies}
-        />
-        <Collection
-          title="Series en tendencia esta semana"
-          shows={trendingTVs}
-        />
-        <Collection title="Películas populares" movies={popularMovies} />
-        <Collection title="Series populares" shows={popularTVs} />
-        <Collection title="Películas mejor calificadas" movies={topMovies} />
+        <Hero fetchArr={collections} />
+        <Railways fetchArr={collections} />
       </section>
       <Footer />
     </>
@@ -49,7 +32,7 @@ export async function getServerSideProps() {
     trendingTVs,
     popularMovies,
     popularTVs,
-  ] = await Promise.all([
+  ] = await Promise.allSettled([
     fetchUpcoming(),
     fetchTop(),
     fetchPlaying(),
@@ -60,13 +43,15 @@ export async function getServerSideProps() {
   ]);
   return {
     props: {
-      upcomingMovies,
-      topMovies,
-      nowPlayingMovies,
-      trendingMovies,
-      trendingTVs,
-      popularMovies,
-      popularTVs,
+      collections: {
+        upcomingMovies,
+        topMovies,
+        nowPlayingMovies,
+        trendingMovies,
+        trendingTVs,
+        popularMovies,
+        popularTVs,
+      },
     },
   };
 }

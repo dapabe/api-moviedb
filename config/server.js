@@ -2,6 +2,7 @@
 //  URLS
 const BASE_URL = "https://api.themoviedb.org/3";
 export const IMAGE_URL = "https://image.tmdb.org/t/p/original/";
+export const IMAGEw_URL = "https://image.tmdb.org/t/p/w500/";
 const M_NowPlaying_URL = `${BASE_URL}/movie/now_playing?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
 const M_Top_URL = `${BASE_URL}/movie/top_rated?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
 const M_Upcoming_URL = `${BASE_URL}/movie/upcoming?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
@@ -15,7 +16,7 @@ function POPULAR_URL(isShow) {
   }?sort_by=popularity.desc&api_key=${process.env.API_KEY}`;
 }
 function TRENDING_URL(isShow) {
-  return `${BASE_URL}/trending/${!isShow ? "movie" : "tv"}/week?api_key=${
+  return `${BASE_URL}/trending/${!isShow ? "movie" : "tv"}/day?api_key=${
     process.env.API_KEY
   }`;
 }
@@ -39,7 +40,7 @@ export async function pluralFetcher(url) {
 //  =====================================================================================================================
 //  Fetcher functions
 export async function fetchUpcoming() {
-  return await singleFetcher(M_Upcoming_URL);
+  return await pluralFetcher(M_Upcoming_URL);
 }
 export async function fetchTop() {
   return await pluralFetcher(M_Top_URL);
@@ -63,6 +64,6 @@ export async function fetchTrendingTVs() {
 //  =====================================================================================================================
 //  Specific data
 
-export async function fetchImage(movie_id) {
+export async function fetchImage() {
   return await singleFetcher(Image_URL);
 }

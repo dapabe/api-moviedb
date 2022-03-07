@@ -1,8 +1,8 @@
-import DISPLAY_ID_INFO from "../../components/content/IDDetails/DISPLAY_ID_INFO";
+import DISPLAY_ID from "../../components/content/IDDetails/DISPLAY_ID";
 import { GET_DETAILS, singleFetcher } from "../../config/server";
 
 export default function ID({ result }) {
-  return <DISPLAY_ID_INFO data={result} />;
+  return <DISPLAY_ID data={result} />;
 }
 
 export async function getServerSideProps(context) {

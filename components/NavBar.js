@@ -10,7 +10,7 @@ export default function NavBar() {
   return (
     <header>
       <nav className="flex items-center justify-center sm:justify-start">
-        <ol className="flex space-x-4">
+        <ol className="flex space-x-10 sm:space-x-4">
           <li>
             <Link href={"/"}>
               <a>

@@ -14,19 +14,19 @@ export default function Thumbnail({ obj, isShow }) {
           }
           layout="fill"
           objectFit="cover"
-          objectPosition="center"
+          objectPosition="top"
           placeholder="blur"
-          blurDataURL="/images/placeholder.jpg"
+          blurDataURL="./images/placeholder.jpg"
           // className="rounded-xl"
         />
         <figcaption className="absolute bottom-1 flex w-full justify-between px-1">
           <h2
             title="Titulo de la pelicula"
-            className=" rounded-xl bg-slate-900/50 px-2"
+            className=" rounded-xl bg-slate-900/80 px-2"
           >
-            {obj.title || obj.original_name}
+            {obj.title || obj.original_title || obj.name || obj.original_name}
           </h2>
-          <span className="rounded-xl bg-slate-900/50 px-2">
+          <span className="rounded-xl bg-slate-900/80 px-2">
             {cutYear(obj.release_date || obj.first_air_date)}
           </span>
         </figcaption>
