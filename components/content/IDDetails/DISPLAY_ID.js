@@ -39,6 +39,7 @@ export default function DISPLAY_ID({ data }) {
             priority={false}
             layout="fill"
             objectFit="cover"
+            alt=""
           />
         </figure>
         <div className="fixed inset-0 flex items-end justify-center">

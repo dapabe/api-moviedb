@@ -107,7 +107,10 @@ export function DisplaySeasons({ title, list }) {
         </summary>
         <div className=" flex  flex-wrap justify-center gap-1 overflow-y-auto">
           {list.map((item) => (
-            <figure className="relative min-h-[300px] min-w-[200px] border">
+            <figure
+              className="relative min-h-[300px] min-w-[200px] border"
+              key={item.poster_path}
+            >
               {item.poster_path && (
                 <Image
                   src={

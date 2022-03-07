@@ -17,7 +17,7 @@ export default function Thumbnail({ obj, isShow }) {
           objectPosition="top"
           placeholder="blur"
           blurDataURL="./images/placeholder.jpg"
-          // className="rounded-xl"
+          alt=""
         />
         <figcaption className="absolute bottom-1 flex w-full justify-between px-1">
           <h2

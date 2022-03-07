@@ -12,6 +12,8 @@ export default function HeroImage({ obj }) {
           }
           layout="fill"
           objectFit="cover"
+          priority={false}
+          alt=""
         />
         <figcaption className="absolute bottom-0 justify-between">
           <h2
