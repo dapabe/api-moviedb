@@ -19,7 +19,7 @@ export default function NavBar() {
               </a>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href={"/about"}>
               <a>
                 <InformationCircleIcon className={iconSize} />
@@ -42,7 +42,7 @@ export default function NavBar() {
                 <h2>Series</h2>
               </a>
             </Link>
-          </li>
+          </li> */}
         </ol>
       </nav>
     </header>
