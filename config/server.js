@@ -1,29 +1,30 @@
 //  =====================================================================================================================
 //  URLS
-const BASE_URL = "https://api.themoviedb.org/3";
+const API_KEY = process.env.API_KEY;
+const BASE_URL = process.env.BASE_URL;
 export const IMAGE_URL = "https://image.tmdb.org/t/p/original/";
 export const IMAGEw_URL = "https://image.tmdb.org/t/p/w500/";
-const M_NowPlaying_URL = `${BASE_URL}/movie/now_playing?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
-const M_Top_URL = `${BASE_URL}/movie/top_rated?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
-const M_Upcoming_URL = `${BASE_URL}/movie/upcoming?api_key=${process.env.API_KEY}&language=es-ES&page=1`;
+const M_NowPlaying_URL = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=es-ES&page=1`;
+const M_Top_URL = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=es-ES&page=1`;
+const M_Upcoming_URL = `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=es-ES&page=1`;
 //  =====
 const Image_URL = (movie_id) => {
-  `${BASE_URL}/movie/${movie_id}/images?api_key=${process.env.API_KEY}&language=es-ES`;
+  `${BASE_URL}/movie/${movie_id}/images?api_key=${API_KEY}&language=es-ES`;
 };
 function POPULAR_URL(isShow) {
   return `${BASE_URL}/discover/${
     !isShow ? "movie" : "tv"
-  }?sort_by=popularity.desc&api_key=${process.env.API_KEY}`;
+  }?sort_by=popularity.desc&api_key=${API_KEY}`;
 }
 function TRENDING_URL(isShow) {
-  return `${BASE_URL}/trending/${!isShow ? "movie" : "tv"}/day?api_key=${
-    process.env.API_KEY
-  }`;
+  return `${BASE_URL}/trending/${
+    !isShow ? "movie" : "tv"
+  }/day?api_key=${API_KEY}`;
 }
 export function GET_DETAILS(id, isShow) {
-  return `${BASE_URL}/${!isShow ? "movie" : "tv"}/${id}?api_key=${
-    process.env.API_KEY
-  }&language=es-ES`;
+  return `${BASE_URL}/${
+    !isShow ? "movie" : "tv"
+  }/${id}?api_key=${API_KEY}&language=es-ES`;
 }
 //  =====================================================================================================================
 //  Fetcher types
