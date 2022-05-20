@@ -18,7 +18,6 @@ export default function Home({ collections }) {
         <Hero fetchArr={collections} />
         <Railways fetchArr={collections} />
       </section>
-      <Footer />
     </>
   );
 }
