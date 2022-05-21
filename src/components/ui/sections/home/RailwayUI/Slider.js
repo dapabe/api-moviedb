@@ -1,24 +1,16 @@
 import Thumbnail from "./Thumbnail";
 
-export default function Slider({ title, ...props }) {
+export default function Slider({ title, list, isShow }) {
   return (
     <section className="container space-y-1 px-3">
-      <h2>{!title ? "Colección" : title}</h2>
+      <h2>{title ? title : "Colección"}</h2>
       <ul className="flex space-x-6 overflow-y-scroll px-2 pt-5 pb-16 scrollbar-hide ">
-        <ThumbnailRouteSwitch {...props} />
+        {list.map((props) => (
+          <li key={props.id}>
+            <Thumbnail obj={props} isShow={isShow ?? false} />
+          </li>
+        ))}
       </ul>
     </section>
   );
 }
-
-const ThumbnailRouteSwitch = ({ list, isShow }) => {
-  return (
-    <>
-      {list.map((list) => (
-        <li key={list.id}>
-          <Thumbnail obj={list} isShow={isShow} />
-        </li>
-      ))}
-    </>
-  );
-};
