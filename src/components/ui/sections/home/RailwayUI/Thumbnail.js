@@ -20,7 +20,7 @@ export default function Thumbnail({ obj, isShow }) {
       <figure className="thumbnail">
         <Image
           src={
-            `https://image.tmdb.org/t/p/w500/${poster_path || backdrop_path}` ||
+            `https://image.tmdb.org/t/p/w500/${backdrop_path || poster_path}` ||
             "/images/placeholder.jpg"
           }
           layout="fill"
