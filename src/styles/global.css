@@ -7,7 +7,7 @@
     @apply bg-gray-900 text-white;
   }
   header {
-    @apply sticky top-0 z-50 w-full bg-gray-800 px-10 py-2 uppercase tracking-wider;
+    @apply sticky top-0 bg-gray-800 px-10 py-2 uppercase tracking-wider;
   }
   main {
     @apply min-h-screen;

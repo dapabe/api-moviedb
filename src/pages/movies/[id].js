@@ -1,5 +1,5 @@
-import DISPLAY_ID from "../../components/content/IDDetails/DISPLAY_ID";
-import { GET_DETAILS, singleFetcher } from "../../utilities/fetcherOptions";
+import DISPLAY_ID from "@components/UI/IDDetails/DISPLAY_ID";
+import { GET_DETAILS, singleFetcher } from "@services/fetcherOptions";
 
 export default function ID({ result }) {
   return <DISPLAY_ID data={result} />;

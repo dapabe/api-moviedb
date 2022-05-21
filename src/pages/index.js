@@ -6,7 +6,7 @@ import {
   fetchTrendingMovies,
   fetchTrendingTVs,
   fetchUpcoming,
-} from "@utilities/fetcherOptions";
+} from "@services/fetcherOptions";
 // import Hero from "@components/UI/sections/home/Hero";
 import ThumbnailRailway from "@components/UI/sections/home/ThumbnailRailway";
 

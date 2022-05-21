@@ -2,7 +2,7 @@ import Image from "next/image";
 import Meta from "../../Meta";
 import ReactPlayer from "react-player";
 import { useState } from "react";
-import { IMAGE_URL } from "@utilities/fetcherOptions";
+import { IMAGE_URL } from "@services/fetcherOptions";
 import { ModalVideo } from "../MicroComponents";
 import { DISPLAY_ID_DETAILS } from "./DISPLAY_ID_DETAILS";
 import { cutYear } from "@utilities/reusable";

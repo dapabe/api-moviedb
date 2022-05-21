@@ -15,7 +15,6 @@ export default function Thumbnail({ obj, isShow }) {
     first_air_date,
     adult,
   } = obj;
-
   return (
     <Link href={`/${isShow ? "shows" : "movies"}/${id}`}>
       <figure className="thumbnail">
