@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply min-w-[300px] bg-gray-900 text-white scrollbar-hide;
+    @apply bg-gray-900 text-white;
   }
   header {
     @apply sticky top-0 z-50 w-full bg-gray-800 px-10 py-2 uppercase tracking-wider;

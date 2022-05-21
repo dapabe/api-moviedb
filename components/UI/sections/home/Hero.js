@@ -1,4 +1,4 @@
-import HeroImage from "./HeroImage";
+import HeroImage from "./HeroUI/HeroImage";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 export default function Hero({ fetchArr }) {

@@ -6,18 +6,15 @@ import {
   fetchTrendingMovies,
   fetchTrendingTVs,
   fetchUpcoming,
-} from "../config/server";
-import Footer from "../components/Footer";
-import Railways from "../components/content/TrainUI/Railways";
-import Hero from "../components/content/HeroUI/Hero";
+} from "@utilities/fetcherOptions";
+// import Hero from "@components/UI/sections/home/Hero";
+import ThumbnailRailway from "@components/UI/sections/home/ThumbnailRailway";
 
 export default function Home({ collections }) {
   return (
     <>
-      <section>
-        <Hero fetchArr={collections} />
-        <Railways fetchArr={collections} />
-      </section>
+      {/* <Hero fetchArr={collections} /> */}
+      <ThumbnailRailway fetchArr={collections} />
     </>
   );
 }
@@ -28,16 +25,16 @@ export async function getServerSideProps() {
     topMovies,
     nowPlayingMovies,
     trendingMovies,
-    trendingTVs,
     popularMovies,
+    trendingTVs,
     popularTVs,
   ] = await Promise.allSettled([
     fetchUpcoming(),
     fetchTop(),
     fetchPlaying(),
     fetchTrendingMovies(),
-    fetchTrendingTVs(),
     fetchPopularMovies(),
+    fetchTrendingTVs(),
     fetchPopularTVs(),
   ]);
   return {
@@ -47,8 +44,8 @@ export async function getServerSideProps() {
         topMovies,
         nowPlayingMovies,
         trendingMovies,
-        trendingTVs,
         popularMovies,
+        trendingTVs,
         popularTVs,
       },
     },

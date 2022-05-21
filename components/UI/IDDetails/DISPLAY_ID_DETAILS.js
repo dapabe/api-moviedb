@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { IMAGEw_URL } from "../../../config/server";
+import { IMAGEw_URL } from "../../../utilities/fetcherOptions";
 import {
   Description,
   DisplaySeasons,

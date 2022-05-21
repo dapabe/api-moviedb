@@ -7,8 +7,8 @@ import {
   XIcon,
 } from "@heroicons/react/solid";
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import { numberToHours, parsedLangDate } from "../utilityFuncs";
-import { IMAGEw_URL } from "../../config/server";
+import { numberToHours, parsedLangDate } from "../../utilities/reusable";
+import { IMAGEw_URL } from "../../utilities/fetcherOptions";
 
 const iconSize = "h-5";
 

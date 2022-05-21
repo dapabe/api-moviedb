@@ -1,16 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cutYear } from "../../utilityFuncs";
+import { cutYear } from "@utilities/reusable";
 
 export default function Thumbnail({ obj, isShow }) {
+  const {
+    id,
+    poster_path,
+    backdrop_path,
+    title,
+    original_title,
+    name,
+    original_name,
+    release_date,
+    first_air_date,
+    adult,
+  } = obj;
+
   return (
-    <Link href={`/${!isShow ? "movies" : "shows"}/${obj.id}`}>
+    <Link href={`/${isShow ? "shows" : "movies"}/${id}`}>
       <figure className="thumbnail">
         <Image
           src={
-            `https://image.tmdb.org/t/p/w500/${
-              obj.poster_path || obj.backdrop_path
-            }` || "/images/placeholder.jpg"
+            `https://image.tmdb.org/t/p/w500/${poster_path || backdrop_path}` ||
+            "/images/placeholder.jpg"
           }
           layout="fill"
           objectFit="cover"
@@ -24,13 +36,13 @@ export default function Thumbnail({ obj, isShow }) {
             title="Titulo de la pelicula"
             className=" rounded-xl bg-slate-900/80 px-2"
           >
-            {obj.title || obj.original_title || obj.name || obj.original_name}
+            {title || original_title || name || original_name}
           </h2>
           <span className="rounded-xl bg-slate-900/80 px-2">
-            {cutYear(obj.release_date || obj.first_air_date)}
+            {cutYear(release_date || first_air_date)}
           </span>
         </figcaption>
-        {obj.adult && (
+        {adult && (
           <span
             title="Para adultos"
             className="absolute right-2 top-2 rounded-xl bg-red-600/90 px-2"

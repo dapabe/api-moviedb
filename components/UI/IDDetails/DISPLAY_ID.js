@@ -2,10 +2,10 @@ import Image from "next/image";
 import Meta from "../../Meta";
 import ReactPlayer from "react-player";
 import { useState } from "react";
-import { IMAGE_URL } from "../../../config/server";
+import { IMAGE_URL } from "@utilities/fetcherOptions";
 import { ModalVideo } from "../MicroComponents";
 import { DISPLAY_ID_DETAILS } from "./DISPLAY_ID_DETAILS";
-import { cutYear } from "../../utilityFuncs";
+import { cutYear } from "@utilities/reusable";
 
 export default function DISPLAY_ID({ data }) {
   // console.log(data);
