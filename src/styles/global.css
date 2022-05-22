@@ -32,7 +32,7 @@
     @apply flex items-center space-x-2;
   }
   .thumbnail {
-    @apply relative min-h-[170px] min-w-[250px] origin-center cursor-pointer  overflow-hidden rounded-xl border-[2px] border-transparent shadow-xl transition-[transform_colors] duration-300 hover:scale-105  hover:border-slate-300 hover:shadow-2xl md:min-h-[210px] md:min-w-[330px];
+    @apply relative min-h-[170px] min-w-[300px] origin-center cursor-pointer overflow-hidden rounded-xl border-[2px] border-transparent shadow-lg transition-[transform_colors] duration-300 hover:scale-105  hover:border-slate-300 hover:shadow-xl md:min-h-[200px] md:min-w-[360px];
   }
   .id-details {
     @apply min-h-max min-w-min max-w-5xl space-y-4 bg-black/70 p-4 transition-all  md:rounded-lg;
