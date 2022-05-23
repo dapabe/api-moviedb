@@ -1,11 +1,11 @@
 import Meta from "./Meta";
-import NavBar from "./NavBar";
+import Header from "./header/Header";
 
 export default function AppLayout({ children }) {
   return (
     <>
       <Meta />
-      <NavBar />
+      <Header />
       <main>{children}</main>
     </>
   );

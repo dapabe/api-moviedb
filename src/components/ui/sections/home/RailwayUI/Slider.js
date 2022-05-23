@@ -22,11 +22,11 @@ export default function Slider({ title, list, isShow }) {
   // console.log(sliderRef?.current?.wheel);
 
   return (
-    <section className="mx-auto space-y-1 pl-3">
-      <h2>{title ? title : "Colección"}</h2>
+    <section className="mx-auto space-y-1">
+      <h2 className="my-2 indent-5">{title ? title : "Colección"}</h2>
       <ul
         ref={sliderRef}
-        className="space-x-6 overflow-x-scroll  whitespace-nowrap px-2 pt-5 pb-10 scrollbar-hide"
+        className="space-x-6 overflow-x-scroll whitespace-nowrap px-4 py-5 scrollbar-hide"
       >
         {list.map((props) => (
           <li key={props.id} className="inline-block">

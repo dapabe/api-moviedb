@@ -1,0 +1,14 @@
+[
+  {
+    "href": "/",
+    "innerText": "Inicio",
+    "altText": "Ir a la pagína de inicio."
+  },
+  {
+    "href": "#search",
+    "innerText": "Buscar",
+    "altText": "Buscar una película o serie."
+  },
+  { "href": "/movies", "innerText": "Películas", "altText": "Ver películas." },
+  { "href": "/shows", "innerText": "Series", "altText": "Ver series." }
+]
