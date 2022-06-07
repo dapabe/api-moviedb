@@ -14,14 +14,12 @@ export default function NavLinks() {
   return navRoutes.map(({ href, innerText, altText }) => (
     <li key={innerText} className="inline md:list-item">
       {href.includes("#") ? (
-        <button type="button" title={altText} className="block">
+        <button type="button" title={altText}>
           {matchingIcon(href)}
         </button>
       ) : (
         <Link href={href}>
-          <a title={altText} className="block">
-            {matchingIcon(href)}
-          </a>
+          <a title={altText}>{matchingIcon(href)}</a>
         </Link>
       )}
     </li>
@@ -37,7 +35,5 @@ const matchingIcon = (text) => {
       return <FilmIcon {...iconSize} />;
     case "/shows":
       return <PresentationChartLineIcon {...iconSize} />;
-    default:
-      break;
   }
 };

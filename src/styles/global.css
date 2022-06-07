@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply relative bg-gray-900 text-white;
+    @apply relative bg-slate-900 text-white;
   }
   header {
-    @apply sticky top-0 z-10 bg-gray-800 px-3 py-2 uppercase tracking-wider md:fixed md:h-screen md:w-16;
+    @apply sticky top-0 z-20 bg-slate-800 px-3 py-2 uppercase tracking-wider md:fixed md:h-screen md:w-16;
   }
   main {
     @apply min-h-screen md:ml-16;
