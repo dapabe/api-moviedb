@@ -8,7 +8,7 @@ export default function Header() {
         <ol className="mx-auto flex h-full gap-x-4 md:w-max md:flex-col md:gap-y-4">
           <NavLinks />
         </ol>
-        <SearchBar />
+        {/* <SearchBar /> */}
       </nav>
     </header>
   );

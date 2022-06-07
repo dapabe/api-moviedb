@@ -8,7 +8,7 @@ export default function ID({ result }) {
 export async function getServerSideProps(context) {
   const { id } = context.query;
   const data = await singleFetcher(
-    `${GET_DETAILS(id, true)}&append_to_response=videos`
+    `${GET_DETAILS(id, "tv")}&append_to_response=videos`
   );
 
   return {

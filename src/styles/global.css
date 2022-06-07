@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply relative bg-slate-900 text-white;
+    @apply relative overscroll-none bg-slate-900 text-white;
   }
   header {
     @apply sticky top-0 z-20 bg-slate-800 px-3 py-2 uppercase tracking-wider md:fixed md:h-screen md:w-16;

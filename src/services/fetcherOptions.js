@@ -8,23 +8,21 @@ const M_NowPlaying_URL = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&langu
 const M_Top_URL = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=es-ES&page=1`;
 const M_Upcoming_URL = `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=es-ES&page=1`;
 //  =====
-const Image_URL = (movie_id) => {
+const image_URL = (movie_id) => {
   `${BASE_URL}/movie/${movie_id}/images?api_key=${API_KEY}&language=es-ES`;
 };
-function POPULAR_URL(isShow) {
-  return `${BASE_URL}/discover/${
-    !isShow ? "movie" : "tv"
-  }?sort_by=popularity.desc&api_key=${API_KEY}`;
+function POPULAR_URL(type = "movie") {
+  return `${BASE_URL}/discover/${type}?sort_by=popularity.desc&api_key=${API_KEY}`;
 }
-function TRENDING_URL(isShow) {
-  return `${BASE_URL}/trending/${
-    !isShow ? "movie" : "tv"
-  }/day?api_key=${API_KEY}`;
+function TRENDING_URL(type = "movie") {
+  return `${BASE_URL}/trending/${type}/day?api_key=${API_KEY}`;
 }
-export function GET_DETAILS(id, isShow) {
-  return `${BASE_URL}/${
-    !isShow ? "movie" : "tv"
-  }/${id}?api_key=${API_KEY}&language=es-ES`;
+export function GET_DETAILS(id, type = "movie") {
+  return `${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=es-ES`;
+}
+
+function getMovieNow(listType = "upcoming") {
+  return `${BASE_URL}/movie/${listType}?api_key=${API_KEY}&language=es-ES&page=1`;
 }
 //  =====================================================================================================================
 //  Fetcher types
@@ -41,30 +39,30 @@ export async function pluralFetcher(url) {
 //  =====================================================================================================================
 //  Fetcher functions
 export async function fetchUpcoming() {
-  return await pluralFetcher(M_Upcoming_URL);
+  return await pluralFetcher(getMovieNow());
 }
 export async function fetchTop() {
-  return await pluralFetcher(M_Top_URL);
+  return await pluralFetcher(getMovieNow("top_rated"));
 }
 export async function fetchPlaying() {
-  return await pluralFetcher(M_NowPlaying_URL);
+  return await pluralFetcher(getMovieNow("now_playing"));
 }
 export async function fetchPopularMovies() {
   return await pluralFetcher(POPULAR_URL());
 }
 export async function fetchPopularTVs() {
-  return await pluralFetcher(POPULAR_URL(true));
+  return await pluralFetcher(POPULAR_URL("tv"));
 }
 
 export async function fetchTrendingMovies() {
   return await pluralFetcher(TRENDING_URL());
 }
 export async function fetchTrendingTVs() {
-  return await pluralFetcher(TRENDING_URL(true));
+  return await pluralFetcher(TRENDING_URL("tv"));
 }
 //  =====================================================================================================================
 //  Specific data
 
 export async function fetchImage() {
-  return await singleFetcher(Image_URL);
+  return await singleFetcher(image_URL);
 }
